@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Prediction Results</h1>
+        <div class="alert alert-success text-center">
+            <h2>Predicted Life Expectancy: {{ prediction }} years</h2>
+        </div>
+        {% if top_factors %}
+        <h3>Key Factors Influencing Prediction</h3>
+        <ul class="list-group">
+            {% for factor in top_factors %}
+            <li class="list-group-item">
+                <strong>{{ factor.Feature }}</strong>: Importance Score {{ factor.Importance | round(2) }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <a href="/" class="btn btn-primary mt-4">Make Another Prediction</a>
+    </div>
+</body>
+</html>
